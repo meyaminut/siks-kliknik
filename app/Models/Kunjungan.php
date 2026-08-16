@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Kunjungan extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'pasien_id',
+        'dokter_id',
+        'tanggal_kunjungan',
+        'nomor_antrian',
+        'status',
+        'keluhan',
+    ];
+
+    public function pasien()
+    {
+        return $this->belongsTo(User::class, 'pasien_id');
+    }
+
+    public function dokter()
+    {
+        return $this->belongsTo(Dokter::class, 'dokter_id');
+    }
+}
